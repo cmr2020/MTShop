@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Convertors\" />
+    <Folder Include="Generator\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Services\" />
+    <Folder Include="Senders\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+
 </Project>
