@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models
 {
-  public  class Item
+    public class Item
     {
         public int Id { get; set; }
 

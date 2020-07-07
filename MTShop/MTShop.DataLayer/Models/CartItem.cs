@@ -4,14 +4,17 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models
 {
-   public class CartItem
+    public class CartItem
     {
         public int Id { get; set; }
+
         public Item Item { get; set; }
+
         public int Quantity { get; set; }
-        public decimal getTotalPrice()
+
+        public decimal GetTotalPrice()
         {
-            return Item.Price = Quantity;
+            return Item.Price * Quantity;
         }
 
 
