@@ -5,25 +5,28 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models.User
 {
-    public class Users
+    public class User
     {
         [Key]
         public int UserId { get; set; }
 
+        [Required]
         [MaxLength(300)]
-        [Display(Name = "ایمیل")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید ")]
         public string Email { get; set; }
 
+        [Required]
         [MaxLength(50)]
-        [Display(Name = "کلمه عبور")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید ")]
         public string Password { get; set; }
 
-        [Display(Name = "تاریخ ثبت نام")]
+        [Required]
         public DateTime RegisterDate { get; set; }
 
-        public bool IsAdmin { get; set; }
+
+        #region Relations
+
+        public List<UserRole> UserRoles { get; set; }
+
+        #endregion
 
     }
 }
