@@ -5,16 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Convertors\" />
-    <Folder Include="Generator\" />
-    <Folder Include="Security\" />
-    <Folder Include="Senders\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
