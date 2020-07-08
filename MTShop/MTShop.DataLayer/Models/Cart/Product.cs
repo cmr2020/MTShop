@@ -17,7 +17,9 @@ namespace MTShop.DataLayer.Models
 
         public string Description { get; set; }
 
-
+        #region Relations
         public List<Category> Categories { get; set; }
+        #endregion
+
     }
 }

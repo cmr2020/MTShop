@@ -9,13 +9,17 @@
     <Folder Include="Generator\" />
     <Folder Include="DTOs\" />
     <Folder Include="Security\" />
-    <Folder Include="Services\" />
     <Folder Include="Senders\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MTShop.DataLayer\MTShop.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>
