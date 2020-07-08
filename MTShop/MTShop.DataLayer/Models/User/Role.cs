@@ -24,7 +24,7 @@ namespace MTShop.DataLayer.Models.User
 
         #region Relations
 
-        public List<UserRole> UserRoles { get; set; }
+        public virtual List<UserRole> UserRoles { get; set; }
 
         #endregion
     }
