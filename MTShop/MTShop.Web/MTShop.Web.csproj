@@ -17,4 +17,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MTShop.Core\MTShop.Core.csproj" />
+    <ProjectReference Include="..\MTShop.DataLayer\MTShop.DataLayer.csproj" />
+  </ItemGroup>
+
 </Project>
