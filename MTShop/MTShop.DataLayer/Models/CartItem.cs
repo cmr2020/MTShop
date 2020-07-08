@@ -4,8 +4,13 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models
 {
-   public class CartItem
+    public class CartItem
     {
+        public CartItem()
+        {
+            
+        }
+
         public int Id { get; set; }
 
         public Item Item { get; set; }
