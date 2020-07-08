@@ -1,19 +1,18 @@
-﻿using System;
+﻿using MTShop.DataLayer.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MTShop.DataLayer.Models
+namespace MTShop.DataLayer.Models.Cart2
 {
-    public class CartItem
+   public class CartItem
     {
         public CartItem()
         {
-            
+
         }
 
         public int Id { get; set; }
-
-        public Item Item { get; set; }
 
         public int Quantity { get; set; }
 
@@ -22,6 +21,8 @@ namespace MTShop.DataLayer.Models
             return Item.Price * Quantity;
         }
 
-
+        #region Relations
+        public Item Item { get; set; }
+        #endregion
     }
 }

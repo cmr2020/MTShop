@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace MTShop.DataLayer.Models
+namespace MTShop.DataLayer.Models.Cart2
 {
-    public class Cart
+   public class Cart
     {
         public Cart()
         {
@@ -17,6 +16,5 @@ namespace MTShop.DataLayer.Models
         #region Relations
         public List<CartItem> CartItems { get; set; }
         #endregion
- 
     }
 }
