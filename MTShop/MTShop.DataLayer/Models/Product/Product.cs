@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MTShop.DataLayer.Models
+namespace MTShop.DataLayer.Models.Product
 {
     public class Product
     {

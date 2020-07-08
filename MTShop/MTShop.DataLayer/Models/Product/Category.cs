@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MTShop.DataLayer.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MTShop.DataLayer.Models
+namespace MTShop.DataLayer.Models.Product
 {
     public class Category
     {
@@ -17,5 +18,10 @@ namespace MTShop.DataLayer.Models
 
         public string Description { get; set; }
 
+        #region Relations
+
+        public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
+
+        #endregion
     }
 }

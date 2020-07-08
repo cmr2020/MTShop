@@ -5,8 +5,14 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models.User
 {
+  
     public class User
     {
+        public User()
+        {
+
+        }
+
         [Key]
         public int UserId { get; set; }
 
@@ -24,7 +30,7 @@ namespace MTShop.DataLayer.Models.User
 
         #region Relations
 
-        public List<UserRole> UserRoles { get; set; }
+        public virtual List<UserRole> UserRoles { get; set; }
 
         #endregion
 
