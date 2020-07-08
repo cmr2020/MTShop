@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Convertors\" />
     <Folder Include="Generator\" />
-    <Folder Include="DTOs\" />
     <Folder Include="Security\" />
     <Folder Include="Senders\" />
     <Folder Include="Services\" />

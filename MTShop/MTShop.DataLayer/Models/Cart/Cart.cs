@@ -17,8 +17,6 @@ namespace MTShop.DataLayer.Models
         #region Relations
         public List<CartItem> CartItems { get; set; }
         #endregion
-
-
-      
+ 
     }
 }
