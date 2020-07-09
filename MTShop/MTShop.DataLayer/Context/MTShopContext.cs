@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using MTShop.DataLayer.Models.User;
 
 namespace MTShop.DataLayer.Context
 {
@@ -15,7 +16,10 @@ namespace MTShop.DataLayer.Context
 
         #region User
 
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<UserPurchaseInformation> UserPurchaseInformations { get; set; }
 
         #endregion
 

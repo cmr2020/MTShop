@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MTShop.DataLayer.Models.User
@@ -50,6 +51,7 @@ namespace MTShop.DataLayer.Models.User
 
         #region Relations
 
+        [ForeignKey("Id")]
         public virtual UserPurchaseInformation UserPurchaseInformation{ get; set; }        
         public virtual List<UserRole> UserRoles { get; set; }
 

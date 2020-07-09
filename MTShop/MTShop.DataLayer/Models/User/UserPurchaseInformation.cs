@@ -12,6 +12,9 @@ namespace MTShop.DataLayer.Models.User
 
         }
 
+        [Key]
+        public int Id { get; set; }
+
         [Display(Name = "شماره موبایل (اختیاری)")]
         [MaxLength(20, ErrorMessage = "شماره موبایل نمی تواند بیشتر از 20 کاراکتر باشد.")]
         public string Mobile { get; set; }
