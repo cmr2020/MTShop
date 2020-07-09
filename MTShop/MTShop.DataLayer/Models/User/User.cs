@@ -45,8 +45,12 @@ namespace MTShop.DataLayer.Models.User
         public bool IsDelete { get; set; }
 
 
+
+
+
         #region Relations
 
+        public virtual UserPurchaseInformation UserPurchaseInformation{ get; set; }        
         public virtual List<UserRole> UserRoles { get; set; }
 
         #endregion
