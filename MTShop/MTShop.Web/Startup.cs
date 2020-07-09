@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MTShop.Core.Services;
+using MTShop.Core.Services.Interfaces;
 using MTShop.DataLayer.Context;
 
 namespace MTShop.Web
@@ -27,11 +29,17 @@ namespace MTShop.Web
         {
             services.AddMvc();
 
-            services.AddDbContext<MTShopContext>(options=>
+            services.AddDbContext<MTShopContext>(options =>
                 {
                     options.UseSqlServer(configuration.GetConnectionString("MTShopConnection"));
                 }
                 );
+
+            #region IoC
+
+            services.AddTransient<IUserService, UserService>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
