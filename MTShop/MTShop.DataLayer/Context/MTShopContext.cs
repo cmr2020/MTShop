@@ -7,12 +7,12 @@ using MTShop.DataLayer.Models.User;
 
 namespace MTShop.DataLayer.Context
 {
-   public class MTShopContext:DbContext
-   {
+    public class MTShopContext : DbContext
+    {
 
-       public MTShopContext(DbContextOptions<MTShopContext> options):base(options)
+        public MTShopContext(DbContextOptions<MTShopContext> options) : base(options)
         {
-            
+
         }
 
         #region User
@@ -30,6 +30,14 @@ namespace MTShop.DataLayer.Context
         public DbSet<ProductComment> ProductComments { get; set; }
 
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CategoryToProduct>()
+                .HasKey(t => new { t.ProductId, t.CategoryId });
+
+            base.OnModelCreating(modelBuilder);
+        }
 
 
     }
