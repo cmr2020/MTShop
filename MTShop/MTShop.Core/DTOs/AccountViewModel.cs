@@ -7,8 +7,14 @@ namespace MTShop.Core.DTOs
 {
     public class RegisterViewModel
     {
+
+        [Display(Name = "نام کاربری")]
+        [Required(ErrorMessage = "لطفا نام کاربری را وارد کنید.")]
+        [MaxLength(100, ErrorMessage = "نام کاربری نمی تواند بیشتر از 100 کاراکتر باشد.")]
+        public string UserName { get; set; }
+
         [MaxLength(300)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نمی باشد")]
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید ")]
         public string Email { get; set; }
@@ -28,7 +34,7 @@ namespace MTShop.Core.DTOs
 
     }
 
-    public class LoginviewModel
+    public class LoginViewModel
     {
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
