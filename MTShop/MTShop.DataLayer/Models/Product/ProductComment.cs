@@ -33,12 +33,12 @@ namespace MTShop.DataLayer.Models.Product
 
         #region Relations
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
-        public User.User User { get; set; }
+        public virtual User.User User { get; set; }
 
         [ForeignKey("ParentId")]
-        public List<ProductComment> ProductComments { get; set; }
+        public virtual List<ProductComment> ProductComments { get; set; }
 
         #endregion
     }

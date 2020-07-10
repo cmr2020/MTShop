@@ -36,7 +36,11 @@ namespace MTShop.DataLayer.Models.Product
         public decimal Price { get; set; }
 
         #region Relations
-        public List<Category> Categories { get; set; }
+
+        public virtual List<Category> Categories { get; set; }
+
+        public virtual List<ProductComment> ProductComments{ get; set; }
+
         #endregion
 
     }
