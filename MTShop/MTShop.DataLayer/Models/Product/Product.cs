@@ -36,8 +36,6 @@ namespace MTShop.DataLayer.Models.Product
 
         public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
 
-        public Item Item { get; set; }
-
         public virtual List<ProductComment> ProductComments{ get; set; }
 
         #endregion

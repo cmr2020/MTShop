@@ -31,13 +31,13 @@ namespace MTShop.DataLayer.Context
 
         #endregion
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CategoryToProduct>()
-                .HasKey(t => new { t.ProductId, t.CategoryId });
-
-            base.OnModelCreating(modelBuilder);
-        }
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<CategoryToProduct>()
+        //         .HasKey(t => new { t.ProductId, t.CategoryId });
+        //
+        //     base.OnModelCreating(modelBuilder);
+        // }
 
 
     }
