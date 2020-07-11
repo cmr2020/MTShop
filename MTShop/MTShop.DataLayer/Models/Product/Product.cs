@@ -7,7 +7,7 @@ namespace MTShop.DataLayer.Models.Product
 {
     public class Product
     {
-       
+
         [Key]
         public int Id { get; set; }
 
@@ -36,7 +36,11 @@ namespace MTShop.DataLayer.Models.Product
 
         public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
 
-        public virtual List<ProductComment> ProductComments{ get; set; }
+        public Item Item { get; set; }
+
+        public virtual List<ProductComment> ProductComments { get; set; }
+
+        public virtual List<ProductImage> ProductImages { get; set; }
 
         #endregion
 

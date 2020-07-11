@@ -1,17 +1,15 @@
 ﻿using MTShop.DataLayer.Models.Product;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MTShop.DataLayer.Models.Cart2
 {
    public class CartItem
     {
-        public CartItem()
-        {
-
-        }
-
+      
+        [Key]
         public int Id { get; set; }
 
         public int Quantity { get; set; }

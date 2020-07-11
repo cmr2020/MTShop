@@ -7,16 +7,12 @@ namespace MTShop.DataLayer.Models.Product
 {
     public class CategoryToProduct
     {
-        public CategoryToProduct()
-        {
-            
-        }
+
 
         [Key]
         public int CP_Id { get; set; }
 
         public int CategoryId { get; set; }
-
         public int ProductId { get; set; }
 
         #region Relations
