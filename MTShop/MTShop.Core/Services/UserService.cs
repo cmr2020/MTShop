@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MTShop.Core.Convertors;
+using MTShop.Core.DTOs;
 using MTShop.Core.Generator;
+using MTShop.Core.Security;
 using MTShop.Core.Services.Interfaces;
 using MTShop.DataLayer.Context;
 using MTShop.DataLayer.Models.User;
@@ -110,6 +113,13 @@ namespace MTShop.Core.Services
         public bool IsExistUserName(string userName)
         {
             return _context.Users.Any(u => u.UserName == userName);
+        }
+
+        public User LoginUser(LoginViewModel login)
+        {
+            string hashPassword = PasswordHelper.EncodePasswordMd5(login.Password);
+            string email = FixedText.FixEmail(login.Email);
+            return _context.Users.SingleOrDefault(u => u.Password == hashPassword && u.Email == email);
         }
 
         public bool UpdateUser(User user)

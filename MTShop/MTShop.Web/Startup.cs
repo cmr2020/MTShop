@@ -38,6 +38,7 @@ namespace MTShop.Web
             #region IoC
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IProductService, ProductService>();
 
             #endregion
         }

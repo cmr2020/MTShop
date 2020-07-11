@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MTShop.Core.DTOs;
 using MTShop.DataLayer.Models.User;
 
 namespace MTShop.Core.Services.Interfaces
@@ -24,6 +25,7 @@ namespace MTShop.Core.Services.Interfaces
         bool IsExistUserName(string userName);
 
         bool ActiveAccount(string activationCode);
+        User LoginUser(LoginViewModel login);
 
     }
 }
