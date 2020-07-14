@@ -9,7 +9,7 @@ namespace MTShop.DataLayer.Models.Product
     {
 
         [Key]
-        public int Id { get; set; }
+        public int ProductId { get; set; }
 
         [Display(Name = "نام محصول")]
         [Required(ErrorMessage = "لطفا نام محصول را وارد کنید.")]
@@ -40,7 +40,8 @@ namespace MTShop.DataLayer.Models.Product
 
         public virtual List<ProductComment> ProductComments { get; set; }
 
-        public virtual List<ProductImage> ProductImages { get; set; }
+
+
 
         #endregion
 
