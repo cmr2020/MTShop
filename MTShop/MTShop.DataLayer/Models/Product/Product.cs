@@ -9,7 +9,7 @@ namespace MTShop.DataLayer.Models.Product
     {
 
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "نام محصول")]
         [Required(ErrorMessage = "لطفا نام محصول را وارد کنید.")]
