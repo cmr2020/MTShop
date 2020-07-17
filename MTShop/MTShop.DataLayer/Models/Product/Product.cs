@@ -8,7 +8,7 @@ namespace MTShop.DataLayer.Models.Product
     public class Product
     {
 
-
+        [Key]
         public int Id { get; set; }
 
         [Display(Name = "نام محصول")]
