@@ -17,6 +17,7 @@ namespace MTShop.DataLayer.Models.Cart
 
         #region Relations
        // public USe User { get; set; }
+       //TEST
         #endregion
     }
 }
