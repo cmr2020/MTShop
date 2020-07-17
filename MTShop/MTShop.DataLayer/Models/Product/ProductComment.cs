@@ -8,12 +8,11 @@ namespace MTShop.DataLayer.Models.Product
 {
     public class ProductComment
     {
-        
+
         [Key]
         public int CommentId { get; set; }
-      
+
         public int UserId { get; set; }
-       
         public int ProductId { get; set; }
 
         [Display(Name = "متن پیام")]
@@ -30,11 +29,11 @@ namespace MTShop.DataLayer.Models.Product
 
         #region Relations
 
-    public virtual Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
-     public virtual User.User User { get; set; }
+        public virtual User.User User { get; set; }
 
-         [ForeignKey("ParentId")]
+        [ForeignKey("ParentId")]
         public virtual List<ProductComment> ProductComments { get; set; }
 
         #endregion
