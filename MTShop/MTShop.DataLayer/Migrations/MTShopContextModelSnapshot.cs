@@ -53,26 +53,6 @@ namespace MTShop.DataLayer.Migrations
                     b.ToTable("CategoryToProduct");
                 });
 
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("QuantityInStock");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("Item");
-                });
-
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -234,14 +214,6 @@ namespace MTShop.DataLayer.Migrations
                     b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
                         .WithMany("CategoryToProducts")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
-                        .WithOne("Item")
-                        .HasForeignKey("MTShop.DataLayer.Models.Product.Item", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
