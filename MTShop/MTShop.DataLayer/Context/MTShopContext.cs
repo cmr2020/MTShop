@@ -29,6 +29,8 @@ namespace MTShop.DataLayer.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductComment> ProductComments { get; set; }
 
+        public DbSet<ProductImage> ProductImages { get; set; }
+
         #endregion
 
         // protected override void OnModelCreating(ModelBuilder modelBuilder)
