@@ -19,6 +19,7 @@ namespace MTShop.DataLayer.Models.Product
         [Display(Name = "توضیحات")]
         public string Description { get; set; }
 
+        [Display(Name = "عکس اصلی")]
         [MaxLength(50)]
         public string ImageName { get; set; }
 
