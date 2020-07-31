@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MTShop.DataLayer.Migrations
 {
     [DbContext(typeof(MTShopContext))]
-    [Migration("20200714140705_changeid")]
-    partial class changeid
+    [Migration("20200731154226_Initial_Db")]
+    partial class Initial_Db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,26 +53,6 @@ namespace MTShop.DataLayer.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CategoryToProduct");
-                });
-
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("QuantityInStock");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
@@ -236,14 +216,6 @@ namespace MTShop.DataLayer.Migrations
                     b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
                         .WithMany("CategoryToProducts")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
-                        .WithOne("Item")
-                        .HasForeignKey("MTShop.DataLayer.Models.Product.Item", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
