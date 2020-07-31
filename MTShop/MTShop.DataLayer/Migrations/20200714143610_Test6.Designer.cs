@@ -4,14 +4,16 @@ using MTShop.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MTShop.DataLayer.Migrations
 {
     [DbContext(typeof(MTShopContext))]
-    partial class MTShopContextModelSnapshot : ModelSnapshot
+    [Migration("20200714143610_Test6")]
+    partial class Test6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,26 +53,6 @@ namespace MTShop.DataLayer.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CategoryToProduct");
-                });
-
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("QuantityInStock");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
@@ -113,19 +95,11 @@ namespace MTShop.DataLayer.Migrations
 
                     b.Property<bool>("IsDelete");
 
-                    b.Property<int?>("ParentId");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("UserId");
+                    b.Property<int?>("ProductId");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("ParentId");
-
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ProductComments");
                 });
@@ -237,29 +211,11 @@ namespace MTShop.DataLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
-                {
-                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
-                        .WithOne("Item")
-                        .HasForeignKey("MTShop.DataLayer.Models.Product.Item", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.ProductComment", b =>
                 {
-                    b.HasOne("MTShop.DataLayer.Models.Product.ProductComment")
-                        .WithMany("ProductComments")
-                        .HasForeignKey("ParentId");
-
                     b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
                         .WithMany("ProductComments")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MTShop.DataLayer.Models.User.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.User.User", b =>

@@ -4,14 +4,16 @@ using MTShop.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MTShop.DataLayer.Migrations
 {
     [DbContext(typeof(MTShopContext))]
-    partial class MTShopContextModelSnapshot : ModelSnapshot
+    [Migration("20200710201600_ini_relatin")]
+    partial class ini_relatin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,14 +63,9 @@ namespace MTShop.DataLayer.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("ProductId");
-
                     b.Property<int>("QuantityInStock");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
 
                     b.ToTable("Item");
                 });
@@ -88,6 +85,8 @@ namespace MTShop.DataLayer.Migrations
 
                     b.Property<bool>("IsExist");
 
+                    b.Property<int?>("ItemId");
+
                     b.Property<decimal>("Price");
 
                     b.Property<string>("ProductName")
@@ -95,6 +94,8 @@ namespace MTShop.DataLayer.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
 
                     b.ToTable("Products");
                 });
@@ -237,12 +238,11 @@ namespace MTShop.DataLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Item", b =>
+            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
                 {
-                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
-                        .WithOne("Item")
-                        .HasForeignKey("MTShop.DataLayer.Models.Product.Item", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("MTShop.DataLayer.Models.Product.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.ProductComment", b =>
