@@ -13,6 +13,8 @@
   <ItemGroup>
     <Compile Include="Migrations\20200731154226_Initial_Db.cs" />
     <Compile Include="Migrations\20200731154226_Initial_Db.designer.cs" />
+    <Compile Include="Migrations\20200731195559_ProducImage.cs" />
+    <Compile Include="Migrations\20200731195559_ProducImage.Designer.cs" />
     <Compile Include="Migrations\MTShopContextModelSnapshot.cs" />
   </ItemGroup>
 

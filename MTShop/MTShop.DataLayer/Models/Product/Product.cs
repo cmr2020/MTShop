@@ -39,6 +39,8 @@ namespace MTShop.DataLayer.Models.Product
 
        public virtual List<ProductComment> ProductComments { get; set; }
 
+        public virtual List<ProductImage> ProductImages { get; set; }
+
         #endregion
 
     }
