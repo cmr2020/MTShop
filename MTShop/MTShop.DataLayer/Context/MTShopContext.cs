@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MTShop.DataLayer.Models.Product;
 using MTShop.DataLayer.Models.User;
 
@@ -31,13 +32,18 @@ namespace MTShop.DataLayer.Context
 
         #endregion
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<CategoryToProduct>()
-        //         .HasKey(t => new { t.ProductId, t.CategoryId });
-        //
-        //     base.OnModelCreating(modelBuilder);
-        // }
+       protected override void OnModelCreating(ModelBuilder modelBuilder)
+         {
+            modelBuilder.Entity<Product>()
+                .HasKey(key => new { key.ProductId, key.ProductName })
+                .HasName("PK_ProductId2");
+
+            modelBuilder.Entity<ProductComment>()
+                .HasKey(key => new { key.CommentId })
+                .HasName("PK_CommentId2");
+
+            base.OnModelCreating(modelBuilder);
+        }
 
 
     }

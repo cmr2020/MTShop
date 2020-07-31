@@ -136,7 +136,7 @@ namespace MTShop.Core.Services
                 ImageName = p.ImageName,
                 IsExist = p.IsExist,
                 Price = p.Price,
-                ProductId = p.Id,
+                ProductId = p.ProductId,
                 ProductName = p.ProductName
             }).Count();
             int pageCount = resultCount % take == 0 ? resultCount / take : resultCount / take + 1;
@@ -146,7 +146,7 @@ namespace MTShop.Core.Services
                 ImageName = p.ImageName,
                 IsExist = p.IsExist,
                 Price = p.Price,
-                ProductId = p.Id,
+                ProductId = p.ProductId,
                 ProductName = p.ProductName
             }).Skip(skip).Take(take).ToList();
 
