@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,15 +9,11 @@ namespace MTShop.DataLayer.Models.Product
     public class ProductComment
     {
 
-        
+        [Key]
         public int CommentId { get; set; }
 
         public int UserId { get; set; }
-
-        public int Id { get; set; }
-
-
-        ///      public int UserId { get; set; }
+        public int ProductId { get; set; }
 
         [Display(Name = "متن پیام")]
         [Required(ErrorMessage = "لطفا متن پیام را وارد کنید.")]
@@ -34,13 +29,11 @@ namespace MTShop.DataLayer.Models.Product
 
         #region Relations
 
-    
         public virtual Product Product { get; set; }
-
 
         public virtual User.User User { get; set; }
 
-      //  [ForeignKey("ParentId")]
+        [ForeignKey("ParentId")]
         public virtual List<ProductComment> ProductComments { get; set; }
 
         #endregion
