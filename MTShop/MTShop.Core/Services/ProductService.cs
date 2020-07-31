@@ -14,7 +14,7 @@ using MTShop.DataLayer.Models.Product;
 
 namespace MTShop.Core.Services
 {
-    public class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
         private MTShopContext _context { get; set; }
 
