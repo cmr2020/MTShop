@@ -14,7 +14,7 @@ using MTShop.DataLayer.Models.Product;
 
 namespace MTShop.Core.Services
 {
-    public class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
         private MTShopContext _context { get; set; }
 
@@ -23,16 +23,18 @@ namespace MTShop.Core.Services
             _context = context;
         }
 
-        public void AddProduct(Product product, IFormFile imgProduct /*todo get list images*/ )
+        public void AddProduct(Product product, IFormFile imgProduct, List<IFormFile> productImages)
         {
             product.ImageName = "no-photo.png";
 
             if (imgProduct.IsImage() && imgProduct != null)
             {
-                AddFirstImageProduct(ref product, imgProduct);
+                string imageName = product.ImageName;
+                AddImageProduct(ref imageName, imgProduct);
+                product.ImageName = imageName;
             }
 
-            //todo add list images
+            AddListImageToProduct(productImages,product);
 
             _context.Products.Add(product);
             _context.SaveChanges();
@@ -68,8 +70,10 @@ namespace MTShop.Core.Services
                     }
 
                 }
-                AddFirstImageProduct(ref product, imgProduct);
 
+                string imageName = product.ImageName;
+                AddImageProduct(ref imageName, imgProduct);
+                product.ImageName = imageName;
             }
             _context.Products.Update(product);
             _context.SaveChanges();
@@ -78,22 +82,6 @@ namespace MTShop.Core.Services
         public Product GetProductById(int productId)
         {
             return _context.Products.Find(productId);
-        }
-
-        public void AddFirstImageProduct(ref Product product, IFormFile imgProduct)
-        {
-            product.ImageName = NameGenerator.GenerateUniqCode() + Path.GetExtension(imgProduct.FileName);
-
-            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Products/Image",
-                product.ImageName);
-            string thumbnailPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Products/Thumbnail",
-                product.ImageName);
-
-            using (var stream = new FileStream(imagePath, FileMode.Create))
-            {
-                imgProduct.CopyTo(stream);
-            }
-            new ImageConvertor().Image_resize(imagePath, thumbnailPath, 200);
         }
 
         public Tuple<List<ShowProductInBoxViewModel>, int> GetProducts(string filterName = "", string orderByType = "پرفروش ترین",

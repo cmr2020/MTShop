@@ -9,16 +9,44 @@ namespace MTShop.Core.Services.Interfaces
 {
     public interface IProductService
     {
-        void AddProduct(Product product, IFormFile imgProduct /*todo get list images*/);
-        void AddFirstImageProduct(ref Product product, IFormFile imgProduct);
+        #region Add
+
+        void AddProduct(Product product, IFormFile imgProduct , List<IFormFile> productImages);
+
+        void AddImageProduct(ref string imageName, IFormFile imgProduct);
+        void AddListImageToProduct(List<IFormFile> productImages, Product product);
+
+        void AddComment(ProductComment comment);
+
+        #endregion
+
+        #region Update
 
         void UpdateProduct(Product product, IFormFile imgProduct /*todo get list images*/ );
 
+        void UpdateComment(ProductComment comment);
+
+        #endregion
+
+        #region Delete
+
         void DeleteProductById(int productId);
 
-        Tuple<List<ShowProductInBoxViewModel>,int> GetProducts(string filterName = "", string orderByType = "پرفروش ترین"
+        void DeleteComment(int CommentId);
+        void DeleteComment(ProductComment comment);
+
+        #endregion
+
+        #region Get
+
+        Tuple<List<ShowProductInBoxViewModel>, int> GetProducts(string filterName = "", string orderByType = "پرفروش ترین"
             , decimal startPrice = 0, decimal endPrice = 0, int pageId = 1, int take = 0/*, List<int> selectedGroups = null*/);
         Product GetProductById(int productId);
+
+        ProductComment GetCommentById(int commentId);
+
+        #endregion
+
 
     }
 }
