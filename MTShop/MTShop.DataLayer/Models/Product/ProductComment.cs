@@ -25,6 +25,8 @@ namespace MTShop.DataLayer.Models.Product
 
         public bool IsDelete { get; set; }
 
+        public bool IsRead { get; set; }
+
         public int? ParentId { get; set; }
 
         #region Relations

@@ -34,9 +34,9 @@ namespace MTShop.DataLayer.Models.Product
 
         #region Relations
 
-        public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
+        public ICollection<Category> Categories { get; set; }
 
-       public virtual List<ProductComment> ProductComments { get; set; }
+        public virtual List<ProductComment> ProductComments { get; set; }
 
         public virtual List<ProductImage> ProductImages { get; set; }
 

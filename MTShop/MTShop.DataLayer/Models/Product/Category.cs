@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MTShop.DataLayer.Models.Product
@@ -11,13 +12,24 @@ namespace MTShop.DataLayer.Models.Product
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = ("عنوان گروه"))]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(150, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        [Display(Name = "حذف شده؟")]
+        public bool IsDelete { get; set; }
+
+        [Display(Name = "گروه اصلی")]
+        public int? ParentId { get; set; }
+
 
         #region Relations
 
-        public ICollection<CategoryToProduct> CategoryToProducts { get; set; }
+        public ICollection<Product> Products { get; set; }
+
+        [ForeignKey("ParentId")]
+        public List<Category> Categories { get; set; }
 
         #endregion
     }
