@@ -11,6 +11,12 @@ namespace MTShop.DataLayer.Models.Product
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        public int CategoryId { get; set; }
+
+
+        public int? SubGroup { get; set; }
+
         [Display(Name = "نام محصول")]
         [Required(ErrorMessage = "لطفا نام محصول را وارد کنید.")]
         [MaxLength(100, ErrorMessage = "نام محصول نمی تواند بیشتر از 100 کاراکتر باشد.")]
