@@ -26,7 +26,11 @@ namespace MTShop.DataLayer.Models.Product
 
         #region Relations
 
-        public ICollection<Product> Products { get; set; }
+        [InverseProperty("Category")]
+        public List<Product> Products { get; set; }
+
+        [InverseProperty("Group")]
+        public List<Product> SubGroup { get; set; }
 
         [ForeignKey("ParentId")]
         public List<Category> Categories { get; set; }

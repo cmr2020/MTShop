@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MTShop.DataLayer.Models.Product
@@ -13,7 +14,6 @@ namespace MTShop.DataLayer.Models.Product
 
         [Required]
         public int CategoryId { get; set; }
-
 
         public int? SubGroup { get; set; }
 
@@ -40,6 +40,12 @@ namespace MTShop.DataLayer.Models.Product
         public decimal Price { get; set; }
 
         #region Relations
+
+        [ForeignKey("Id")]
+        public Category Category { get; set; }
+
+        [ForeignKey("SubGroup")]
+        public Category Group { get; set; }
 
         public ICollection<Category> Categories { get; set; }
 

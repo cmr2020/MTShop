@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using MTShop.Core.Services.Interfaces;
 using MTShop.DataLayer.Models.Product;
@@ -33,6 +34,13 @@ namespace MTShop.Core.Services
         {
             comment.IsDelete = true;
             UpdateComment(comment);
+        }
+
+        public Tuple<List<ProductComment>, int> GetProductComment(int take, int pageid, int productId)
+        {
+            _context.ProductComments.Where(pc => pc.ProductId == productId);
+            return null;
+           // todo
         }
 
         public ProductComment GetCommentById(int commentId)

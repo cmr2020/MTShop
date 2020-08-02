@@ -43,6 +43,8 @@ namespace MTShop.Core.Services.Interfaces
             , decimal startPrice = 0, decimal endPrice = 0, int pageId = 1, int take = 0/*, List<int> selectedGroups = null*/);
         Product GetProductById(int productId);
 
+        Tuple<List<ProductComment>, int> GetProductComment(int take, int pageid, int productId);
+
         ProductComment GetCommentById(int commentId);
 
         #endregion
