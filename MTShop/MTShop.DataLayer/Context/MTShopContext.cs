@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using MTShop.DataLayer.Models.Product;
+using MTShop.DataLayer.Models.Relationship;
 using MTShop.DataLayer.Models.User;
 
 namespace MTShop.DataLayer.Context
@@ -31,15 +32,18 @@ namespace MTShop.DataLayer.Context
 
         public DbSet<ProductImage> ProductImages { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         #endregion
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<CategoryToProduct>()
-        //         .HasKey(t => new { t.ProductId, t.CategoryId });
-        //
-        //     base.OnModelCreating(modelBuilder);
-        // }
+        #region Relationship
+
+
+        public DbSet<About> Abouts { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        #endregion
 
 
     }

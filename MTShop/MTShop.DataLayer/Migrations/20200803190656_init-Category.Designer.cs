@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MTShop.DataLayer.Migrations
 {
     [DbContext(typeof(MTShopContext))]
-    [Migration("20200731154226_Initial_Db")]
-    partial class Initial_Db
+    [Migration("20200803190656_init-Category")]
+    partial class initCategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,39 +27,30 @@ namespace MTShop.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
+                    b.Property<bool>("IsDelete");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<int?>("ParentId");
+
+                    b.Property<int?>("ProductId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.CategoryToProduct", b =>
-                {
-                    b.Property<int>("CP_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId");
-
-                    b.Property<int>("ProductId");
-
-                    b.HasKey("CP_Id");
-
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ParentId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CategoryToProduct");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
+
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Description");
 
@@ -76,7 +67,11 @@ namespace MTShop.DataLayer.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
+                    b.Property<int?>("SubGroup");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SubGroup");
 
                     b.ToTable("Products");
                 });
@@ -95,6 +90,8 @@ namespace MTShop.DataLayer.Migrations
 
                     b.Property<bool>("IsDelete");
 
+                    b.Property<bool>("IsRead");
+
                     b.Property<int?>("ParentId");
 
                     b.Property<int>("ProductId");
@@ -110,6 +107,77 @@ namespace MTShop.DataLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductComments");
+                });
+
+            modelBuilder.Entity("MTShop.DataLayer.Models.Product.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Images")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("MTShop.DataLayer.Models.Relationship.About", b =>
+                {
+                    b.Property<int>("AboutId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.HasKey("AboutId");
+
+                    b.ToTable("Abouts");
+                });
+
+            modelBuilder.Entity("MTShop.DataLayer.Models.Relationship.Contact", b =>
+                {
+                    b.Property<int>("ContactId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.HasKey("ContactId");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.User.Role", b =>
@@ -206,17 +274,27 @@ namespace MTShop.DataLayer.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("MTShop.DataLayer.Models.Product.CategoryToProduct", b =>
+            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Category", b =>
+                {
+                    b.HasOne("MTShop.DataLayer.Models.Product.Category")
+                        .WithMany("Categories")
+                        .HasForeignKey("ParentId");
+
+                    b.HasOne("MTShop.DataLayer.Models.Product.Product")
+                        .WithMany("Categories")
+                        .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("MTShop.DataLayer.Models.Product.Product", b =>
                 {
                     b.HasOne("MTShop.DataLayer.Models.Product.Category", "Category")
-                        .WithMany("CategoryToProducts")
-                        .HasForeignKey("CategoryId")
+                        .WithMany("Products")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
-                        .WithMany("CategoryToProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("MTShop.DataLayer.Models.Product.Category", "Group")
+                        .WithMany("SubGroup")
+                        .HasForeignKey("SubGroup");
                 });
 
             modelBuilder.Entity("MTShop.DataLayer.Models.Product.ProductComment", b =>
@@ -233,6 +311,14 @@ namespace MTShop.DataLayer.Migrations
                     b.HasOne("MTShop.DataLayer.Models.User.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MTShop.DataLayer.Models.Product.ProductImage", b =>
+                {
+                    b.HasOne("MTShop.DataLayer.Models.Product.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

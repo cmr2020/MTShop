@@ -11,10 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20200731154226_Initial_Db.cs" />
-    <Compile Include="Migrations\20200731154226_Initial_Db.designer.cs" />
-    <Compile Include="Migrations\20200731195559_ProducImage.cs" />
-    <Compile Include="Migrations\20200731195559_ProducImage.Designer.cs" />
+    <Compile Include="Migrations\20200803190656_init-Category.cs" />
+    <Compile Include="Migrations\20200803190656_init-Category.Designer.cs" />
     <Compile Include="Migrations\MTShopContextModelSnapshot.cs" />
   </ItemGroup>
 
