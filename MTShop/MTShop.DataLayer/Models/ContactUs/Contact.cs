@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MTShop.DataLayer.Models.Relationship
+namespace MTShop.DataLayer.Models.ContactUs
 {
     public class Contact
     {

@@ -35,6 +35,8 @@ namespace MTShop.Core.Services.Interfaces
         void DeleteComment(int CommentId);
         void DeleteComment(ProductComment comment);
 
+        void DeleteImageProduct(string imageName);
+
         #endregion
 
         #region Get
@@ -43,8 +45,8 @@ namespace MTShop.Core.Services.Interfaces
             , decimal startPrice = 0, decimal endPrice = 0, int pageId = 1, int take = 0/*, List<int> selectedGroups = null*/);
         Product GetProductById(int productId);
 
-        Tuple<List<ProductComment>, int> GetProductComment(int take, int pageid, int productId);
-
+        Tuple<List<ProductComment>, int> GetProductComments(int take, int pageid, int productId);
+        Tuple<List<ProductComment>, int> GetUnreadComments(int take = 20, int pageId = 1);
         ProductComment GetCommentById(int commentId);
 
         #endregion

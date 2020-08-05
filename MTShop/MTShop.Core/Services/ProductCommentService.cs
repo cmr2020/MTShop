@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using MTShop.Core.Services.Interfaces;
 using MTShop.DataLayer.Models.Product;
 
@@ -36,11 +37,27 @@ namespace MTShop.Core.Services
             UpdateComment(comment);
         }
 
-        public Tuple<List<ProductComment>, int> GetProductComment(int take, int pageid, int productId)
+        public Tuple<List<ProductComment>, int> GetProductComments(int take, int pageid, int productId)
         {
             _context.ProductComments.Where(pc => pc.ProductId == productId);
             return null;
-           // todo
+            // todo
+        }
+
+        public Tuple<List<ProductComment>, int> GetUnreadComments(int take = 20, int pageId = 1)
+        {
+            List<ProductComment> productComments = _context.ProductComments
+                .Include(pc => pc.User)
+                .Include(pc => pc.Product)
+                .Where(pc => pc.IsRead == false)
+                .OrderByDescending(pc => pc.CreateDate).ToList();
+
+            int skip = (pageId - 1) * take;
+
+            int productCommentCount = productComments.Count();
+            int pageCount = productCommentCount % take == 0 ? productCommentCount / take : productCommentCount / take + 1;
+
+            return Tuple.Create(productComments.Skip(skip).Take(take).ToList(), pageCount);
         }
 
         public ProductComment GetCommentById(int commentId)

@@ -34,7 +34,7 @@ namespace MTShop.Core.Services
                 product.ImageName = imageName;
             }
 
-            AddListImageToProduct(productImages,product);
+            AddListImageToProduct(productImages, product);
 
             _context.Products.Add(product);
             _context.SaveChanges();
@@ -53,21 +53,7 @@ namespace MTShop.Core.Services
             {
                 if (product.ImageName != "no-photo.png")
                 {
-                    string deleteImagePath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/Images/Products/Image",
-                        product.ImageName);
-                    string deleteThumbPath = Path.Combine(Directory.GetCurrentDirectory(),
-                        "wwwroot/Images/Products/Thumbnail",
-                        product.ImageName);
-
-                    if (File.Exists(deleteImagePath))
-                    {
-                        File.Delete(deleteImagePath);
-                    }
-                    if (File.Exists(deleteThumbPath))
-                    {
-                        File.Delete(deleteThumbPath);
-                    }
+                    DeleteImageProduct(product.ImageName);
 
                 }
 
@@ -83,6 +69,7 @@ namespace MTShop.Core.Services
         {
             return _context.Products.Find(productId);
         }
+
 
         public Tuple<List<ShowProductInBoxViewModel>, int> GetProducts(string filterName = "", string orderByType = "پرفروش ترین",
             decimal startPrice = 0, decimal endPrice = 0, int pageId = 1, int take = 0/*, List<int> selectedGroups = null*/)

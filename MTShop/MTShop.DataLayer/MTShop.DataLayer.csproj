@@ -11,14 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20200803190656_init-Category.cs" />
-    <Compile Include="Migrations\20200803190656_init-Category.Designer.cs" />
     <Compile Include="Migrations\MTShopContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Relationship\" />
   </ItemGroup>
 
 </Project>

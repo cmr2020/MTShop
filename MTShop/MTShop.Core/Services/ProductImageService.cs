@@ -11,17 +11,17 @@ using MTShop.DataLayer.Models.Product;
 
 namespace MTShop.Core.Services
 {
-   public partial class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
+        private readonly string internalImagePath = "wwwroot/Images/Products/Image";
+        private readonly string internalThumbnailPath = "wwwroot/Images/Products/Thumbnail";
 
         public void AddImageProduct(ref string imageName, IFormFile imgProduct)
         {
             imageName = NameGenerator.GenerateUniqCode() + Path.GetExtension(imgProduct.FileName);
 
-            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Products/Image",
-                imageName);
-            string thumbnailPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Products/Thumbnail",
-                imageName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), internalImagePath, imageName);
+            string thumbnailPath = Path.Combine(Directory.GetCurrentDirectory(), internalThumbnailPath, imageName);
 
             using (var stream = new FileStream(imagePath, FileMode.Create))
             {
@@ -51,6 +51,25 @@ namespace MTShop.Core.Services
                     }
 
                 }
+            }
+        }
+
+        public void DeleteImageProduct(string imageName)
+        {
+            string deleteImagePath = Path.Combine(Directory.GetCurrentDirectory(),
+                internalImagePath,
+                imageName);
+            string deleteThumbPath = Path.Combine(Directory.GetCurrentDirectory(),
+                internalThumbnailPath,
+                imageName);
+
+            if (File.Exists(deleteImagePath))
+            {
+                File.Delete(deleteImagePath);
+            }
+            if (File.Exists(deleteThumbPath))
+            {
+                File.Delete(deleteThumbPath);
             }
         }
     }

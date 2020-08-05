@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using MTShop.DataLayer.Models.AboutUs;
+using MTShop.DataLayer.Models.ContactUs;
 using MTShop.DataLayer.Models.Product;
-using MTShop.DataLayer.Models.Relationship;
 using MTShop.DataLayer.Models.User;
 
 namespace MTShop.DataLayer.Context
@@ -36,7 +37,7 @@ namespace MTShop.DataLayer.Context
 
         #endregion
 
-        #region Relationship
+        #region AboutUsAndContactUs
 
 
         public DbSet<About> Abouts { get; set; }

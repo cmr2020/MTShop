@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MTShop.DataLayer.Models.Relationship
+namespace MTShop.DataLayer.Models.AboutUs
 {
     public class About
     {
@@ -17,7 +14,6 @@ namespace MTShop.DataLayer.Models.Relationship
 
         [Display(Name = "توضیحات")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string Description { get; set; }
 
         [MaxLength(50)]
