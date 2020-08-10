@@ -14,10 +14,14 @@ namespace MTShop.DataLayer.Models.AboutUs
 
         [Display(Name = "توضیحات")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string Description { get; set; }
 
         [MaxLength(50)]
         public string Image { get; set; }
+
+        
+
 
     }
 }

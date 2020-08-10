@@ -32,5 +32,10 @@ namespace MTShop.DataLayer.Models.ContactUs
         [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string Description { get; set; }
 
+        [Display(Name = "آدرس")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(250, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
+        public string Address { get; set; }
+
     }
 }
