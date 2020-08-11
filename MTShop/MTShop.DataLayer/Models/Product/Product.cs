@@ -12,6 +12,8 @@ namespace MTShop.DataLayer.Models.Product
         [Key]
         public int Id { get; set; }
 
+        public int ProductId { get; set; }
+
         [Required]
         public int CategoryId { get; set; }
 
@@ -69,6 +71,9 @@ namespace MTShop.DataLayer.Models.Product
 
         public virtual List<ProductColor> ProductColors { get; set; }
 
+        public virtual List<ProductProperty> ProductProperties { get; set; }
+
+        public int MyProperty { get; set; }
 
         #endregion
 
