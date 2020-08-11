@@ -35,6 +35,8 @@ namespace MTShop.DataLayer.Models.Product
         [ForeignKey("ParentId")]
         public List<Category> Categories { get; set; }
 
+        public List<ProductProperty> ProductProperties { get; set; }
+
         #endregion
     }
 }

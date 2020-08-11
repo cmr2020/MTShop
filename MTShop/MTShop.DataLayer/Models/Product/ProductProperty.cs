@@ -12,18 +12,21 @@ namespace MTShop.DataLayer.Models.Product
 
         public int ProductId { get; set; }
 
+        public int CategoryId { get; set; }
+
         [Display(Name = "نام ویژگی")]
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string PropertyName { get; set; }
 
         [Display(Name = "مقدار ویژگی")]
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string PropertyValue { get; set; }
 
         #region Relations
 
         public virtual Product Product { get; set; }
-       
+
+        public virtual Category Category { get; set; }
 
         #endregion
 
