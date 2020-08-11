@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MTShop.DataLayer.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,8 +7,7 @@ using System.Text;
 
 namespace MTShop.DataLayer.Models.User
 {
-
-    public class User
+   public class User
     {
         public User()
         {
@@ -52,10 +52,11 @@ namespace MTShop.DataLayer.Models.User
         #region Relations
 
         [ForeignKey("Id")]
-        public virtual UserPurchaseInformation UserPurchaseInformation{ get; set; }        
+        public virtual UserPurchaseInformation UserPurchaseInformation { get; set; }
         public virtual List<UserRole> UserRoles { get; set; }
+        public List<ProductRating> ProductRating { get; set; }
 
         #endregion
-
     }
 }
+

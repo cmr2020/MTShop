@@ -11,7 +11,7 @@ namespace MTShop.DataLayer.Models.Product
 
         [Key]
         public int Id { get; set; }
-      
+
         [Required]
         public int CategoryId { get; set; }
 
@@ -39,18 +39,18 @@ namespace MTShop.DataLayer.Models.Product
         [Required(ErrorMessage = "لطفا قیمت محصول را وارد کنید.")]
         public decimal Price { get; set; }
 
-        [Display(Name ="در اسلایدر نمایش داده شود؟")]
+        [Display(Name = "در اسلایدر نمایش داده شود؟")]
         public bool InSlider { get; set; }
 
         [Display(Name = "عکس")]
         public string ImageSlider { get; set; }
 
         [Required(ErrorMessage = "لطفا گارانتی محصول را وارد بکنید.")]
-        [Display(Name ="گارانتی")]
+        [Display(Name = "گارانتی")]
         public string Warranty { get; set; }
 
         [Required(ErrorMessage = "لطفا برچسب ها را وارد بکنید.")]
-        [Display(Name ="برچسب")]
+        [Display(Name = "برچسب")]
         public string Tags { get; set; }
 
         #region Relations
@@ -70,7 +70,9 @@ namespace MTShop.DataLayer.Models.Product
         public virtual List<ProductColor> ProductColors { get; set; }
 
         public virtual List<ProductProperty> ProductProperties { get; set; }
-       
+
+        public virtual List<ProductRating> ProductRatings { get; set; }
+
         #endregion
 
     }
