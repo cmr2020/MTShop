@@ -21,7 +21,7 @@ namespace MTShop.DataLayer.Models.Product
 
         public virtual Product Product { get; set; }
 
-//       public User Users { get; set; }
+        public User.User User { get; set; }
         #endregion
 
     }
