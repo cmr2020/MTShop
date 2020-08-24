@@ -66,7 +66,7 @@ namespace MTShop.Core.Services
 
         public List<Permission> GetAllPermission()
         {
-            //return _context.Permission.ToList();
+            return _context.Permission.ToList();
             throw new NotImplementedException();
         }
 

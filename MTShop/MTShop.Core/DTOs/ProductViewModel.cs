@@ -16,6 +16,8 @@ namespace MTShop.Core.DTOs
 
         public string ImageName { get; set; }
 
+        public float Score { get; set; }
+
 
 
     }

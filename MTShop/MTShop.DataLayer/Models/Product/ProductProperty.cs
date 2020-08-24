@@ -19,7 +19,7 @@ namespace MTShop.DataLayer.Models.Product
         public string PropertyName { get; set; }
 
         [Display(Name = "مقدار ویژگی")]
-        [MaxLength(100, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
+        [MaxLength(500, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
         public string PropertyValue { get; set; }
 
         #region Relations
