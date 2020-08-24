@@ -20,6 +20,7 @@ namespace MTShop.DataLayer.Models.User
         [MaxLength(150,ErrorMessage = "عنوان نقش نمی تواند بیشتر از 150 کاراکتر باشد.")]
         public string RoleTitle { get; set; }
 
+        public bool IsDelete { get; set; }
 
 
         #region Relations
