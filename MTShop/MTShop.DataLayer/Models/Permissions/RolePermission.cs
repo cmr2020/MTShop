@@ -11,9 +11,7 @@ namespace MTShop.DataLayer.Models.Permissions
 
         [Key]
         public int RP_Id { get; set; }
-
         public int RoleId { get; set; }
-
         public int PermissionId { get; set; }
 
 

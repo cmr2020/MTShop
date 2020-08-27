@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MTShop.DataLayer.Models.Permissions;
+
 
 namespace MTShop.Core.Services
 {
@@ -21,7 +21,7 @@ namespace MTShop.Core.Services
 
         public List<Role> GetAllRoles()
         {
-          return  _context.Roles.ToList();
+            return _context.Roles.ToList();
         }
         public int AddRole(Role role)
         {
@@ -32,23 +32,12 @@ namespace MTShop.Core.Services
 
         public Role GetRoleById(int roleId)
         {
-          return  _context.Roles.Find(roleId);
+            return _context.Roles.Find(roleId);
         }
-        public void UpdateRole(Role role)
-        {
-            _context.Roles.Update(role);
-            _context.SaveChanges();
-        }
-
-        public void DeleteRole(Role role)
-        {
-            role.IsDelete = true;
-            UpdateRole(role);
-        }
-
+             
         public void AddRolesToUser(List<int> roleid, int userId)
         {
-           foreach(int roleId in roleid)
+            foreach (int roleId in roleid)
             {
                 _context.UserRoles.Add(new UserRole()
                 {
@@ -66,34 +55,54 @@ namespace MTShop.Core.Services
 
         public List<Permission> GetAllPermission()
         {
-            return _context.Permission.ToList();
-            throw new NotImplementedException();
-        }
 
+            return _context.Permissions.ToList();
+
+        }
 
         public void AddPermissionToRole(int roleId, List<int> permission)
         {
-            throw new NotImplementedException();
+            foreach (var p in permission)
+            {
+                _context.RolePermissions.Add(new RolePermission()
+                {
+                    PermissionId = p,
+                    RoleId = roleId
+                });
+            }
         }
-
-
 
         public List<int> PermissionRole(int roleId)
         {
-            throw new NotImplementedException();
+            return _context.RolePermissions
+               .Where(r => r.RoleId == roleId)
+               .Select(r => r.PermissionId).ToList();
+        }
+
+        public void UpdatePermissionRole(int roleId, List<int> permission)
+        {
+            _context.RolePermissions.Where(p => p.RoleId == roleId)
+                .ToList().ForEach(p => _context.RolePermissions.Remove(p));
+
+            AddPermissionToRole(roleId, permission);
         }
 
         public bool CheckPermission(int permissionId, string userName)
         {
-            throw new NotImplementedException();
+            int userId = _context.Users.Single(u => u.UserName == userName).UserId;
+
+            List<int> UserRoles = _context.UserRoles
+                .Where(r => r.UserId == userId).Select(r => r.RoleId).ToList();
+
+            if (!UserRoles.Any())
+                return false;
+
+            List<int> RolePermission = _context.RolePermissions
+                .Where(p => p.PermissionId == permissionId)
+                .Select(p => p.RoleId).ToList();
+
+            return RolePermission.Any(p => UserRoles.Contains(p));
         }
-
-
-        public void UpdatePermissionRole(int roleId, List<int> Permission)
-        {
-            throw new NotImplementedException();
-        }
-
-
+       
     }
 }

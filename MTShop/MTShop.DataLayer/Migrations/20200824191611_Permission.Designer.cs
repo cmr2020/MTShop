@@ -4,14 +4,16 @@ using MTShop.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MTShop.DataLayer.Migrations
 {
     [DbContext(typeof(MTShopContext))]
-    partial class MTShopContextModelSnapshot : ModelSnapshot
+    [Migration("20200824191611_Permission")]
+    partial class Permission
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
