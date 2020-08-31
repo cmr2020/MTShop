@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using MTShop.DataLayer.Models.Product.Filter;
 
 namespace MTShop.DataLayer.Models.Product
 {
@@ -36,6 +37,8 @@ namespace MTShop.DataLayer.Models.Product
         public List<Category> Categories { get; set; }
 
         public List<ProductProperty> ProductProperties { get; set; }
+
+        public List<FiltersGroup> FiltersGroups { get; set; }
 
         #endregion
     }
