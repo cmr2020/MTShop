@@ -6,7 +6,7 @@ using MTShop.DataLayer.Models.AboutUs;
 using MTShop.DataLayer.Models.ContactUs;
 using MTShop.DataLayer.Models.Product;
 using MTShop.DataLayer.Models.User;
-
+using MTShop.DataLayer.Models.Permissions;
 namespace MTShop.DataLayer.Context
 {
     public class MTShopContext : DbContext
@@ -46,6 +46,13 @@ namespace MTShop.DataLayer.Context
 
         #endregion
 
+        #region Permissions
+
+        public DbSet<Permission> Permissions { get; set; }
+
+        public DbSet<RolePermission> RolePermissions { get; set; }
+
+        #endregion
 
     }
 }

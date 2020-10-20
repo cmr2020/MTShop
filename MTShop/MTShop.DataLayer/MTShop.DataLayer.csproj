@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Migrations\20200824190714_CreatePermission.cs" />
+    <Compile Include="Migrations\20200824190714_CreatePermission.Designer.cs" />
+    <Compile Include="Migrations\20200824191611_Permission.cs" />
+    <Compile Include="Migrations\20200824191611_Permission.Designer.cs" />
     <Compile Include="Migrations\MTShopContextModelSnapshot.cs" />
   </ItemGroup>
 
