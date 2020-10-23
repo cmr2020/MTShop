@@ -50,8 +50,11 @@ namespace MTShop.DataLayer.Models.Product
         public string Warranty { get; set; }
 
         [Required(ErrorMessage = "لطفا برچسب ها را وارد بکنید.")]
-        [Display(Name = "برچسب")]
+        [Display(Name = "برچسب ها")]
         public string Tags { get; set; }
+
+        [Display(Name = "امتیاز خریداران")]
+        public float Score { get; set; }  
 
         #region Relations
 

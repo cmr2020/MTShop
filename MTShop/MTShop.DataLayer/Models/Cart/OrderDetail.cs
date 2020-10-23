@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using MTShop.DataLayer.Models.User;
+
 namespace MTShop.DataLayer.Models.Cart
 {
-    public class Order
+   public class OrderDetail
     {
+
+        [Key]
         public int OrderId { get; set; }
 
         public int UserId { get; set; }
@@ -16,9 +19,12 @@ namespace MTShop.DataLayer.Models.Cart
         public bool IsFinaly { get; set; }
 
 
-        #region Relations
+        #region Permission
+
         [ForeignKey("UserId")]
         public User.User Users { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
+
         #endregion
     }
 }
