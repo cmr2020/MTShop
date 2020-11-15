@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <title>لکامرس - @ViewData["Title"]</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <partial name="_Styles" />
+    
+</head>
+
+<body class="home">
+
+    <header class="header style7">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <div class="header-message">
+                        به فروشگاه آنلاین ما خوش آمدید!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*شامل حساب کاربری و سرچ باکس و لوگو*@
+        <partial name="_MainHeader" />
+
+        @* منو : دسته بندی محصولات و منوی صفحات *@
+        <div class="header-nav-container rows-space-20">
+            <div class="container">
+                <div class="header-nav-wapper main-menu-wapper">
+
+                    @* منوی دسته بندی محصولات *@
+                    <partial name="_CategoryMenu" />
+
+                    @* منوی دسترسی سایت *@
+                    <partial name="_PagesMenu" />
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @* منو برای سایز موبایل *@
+    <partial name="_HeaderDeviceMobile" />
+
+    @RenderBody()
+
+    @* فوتر اصلی سایت *@
+    <partial name="_Footer" />
+
+    @*فوتر برای بخش علاقه مندی ها*@
+    <partial name="_FooterDeviceMobile" />
+
+    @* دکمه اسکرول به بالای صفحه *@
+    <a href="#" class="backtotop">
+        <i class="pe-7s-angle-up"></i>
+    </a>
+
+    <partial name="_JavaScripts" />
+</body>
+
+</html>
